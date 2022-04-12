@@ -34,17 +34,23 @@ handleSearch = (query) => {
 }
 
 setSearch = (searchBooks) => {
-  searchBooks.map(searchBook => {
+  if (Array.isArray(searchBooks)) {
+    searchBooks.map(searchBook => {
 
-    const result = this.props.shelfBooks.find(shelfBook => shelfBook.id === searchBook.id)
-
-    searchBook.shelf = result ? result.shelf : 'none'
-  })
-  return (
+      const result = this.props.shelfBooks.find(shelfBook => shelfBook.id === searchBook.id)
+  
+      searchBook.shelf = result ? result.shelf : 'none'
+    })
+    return (
+      this.setState(() => ({
+        search: searchBooks
+      }))
+    )
+  } else {
     this.setState(() => ({
-      search: searchBooks
+      search: []
     }))
-  )
+  }
 }
 
   render () {
