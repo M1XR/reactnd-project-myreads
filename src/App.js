@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import BookMain from "./Components/BookMain";
 import BookSearch from "./Components/BookSearch";
+import NotFound from './Components/NotFound';
 import * as BooksAPI from './Components/BooksAPI';
 import { Routes, Route } from 'react-router-dom'
 
@@ -35,6 +36,10 @@ class App extends React.Component {
     return (
       <div className="app">
         <Routes>
+          <Route
+            path='*'
+            element={<NotFound />}
+          />
           <Route
             exact path='/'
             element={
