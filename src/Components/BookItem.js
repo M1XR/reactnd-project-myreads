@@ -62,7 +62,7 @@ const BookItem = ({book, shelfChange}) => {
         <div
           className="book-authors"
           key={book.id+'-authors'}
-        >{(book.authors) ? book.authors : ''}</div>
+        >{(book.authors) ? book.authors.join(', ') : ''}</div>
       </div>
     </li>
   )
